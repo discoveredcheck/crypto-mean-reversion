@@ -6,6 +6,7 @@ import argparse
 import aiocontext
 import os
 import traceback
+import json
 
 async def wrapper(coro, name='GLOBAL'):
     ASYNCIO_CONTEXT['request_id'] = name
