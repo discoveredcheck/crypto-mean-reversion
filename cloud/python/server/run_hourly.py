@@ -34,7 +34,7 @@ async def trade_save(acc, db_name, fund_size, window_size_short, universe, max_n
 
 async def main(args):
     query_tasks = args.tasks
-    global_config = await get_current_config()
+    global_config = json.load(open('config.json'))
     main_account = global_config['binance_accounts'][0][0]
     db_name = os.environ.get('BINANCE_DB_SECRET_LOCAL', None)
     if not db_name:
