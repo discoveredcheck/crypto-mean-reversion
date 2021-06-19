@@ -1,0 +1,26 @@
+{
+    "cluster": "arn:aws:ecs:eu-west-1:123456789012:cluster/binance",
+    "count": 1,
+    "launchType": "FARGATE",
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-00000000"
+            ],
+            "securityGroups": [
+                "sg-00000000"
+            ],
+            "assignPublicIp": "ENABLED"
+        }
+    },
+    "taskDefinition": "binance_hourly:4",
+    "overrides": {
+	"containerOverrides": [{
+		"name": "binance_hourly",
+		"command": [
+			"--tasks",
+			"trade"
+		]
+	}]
+    }
+}
