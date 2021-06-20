@@ -30,7 +30,7 @@ from psycopg2.errors import UniqueViolation
 
 # docker login --username AWS -p $(aws ecr get-login-password --region eu-west-1) 123456789012.dkr.ecr.eu-west-1.amazonaws.com/binance_server
 
-BINANCE_WAIT_TIME = 0.11
+BINANCE_WAIT_TIME = 0.2
 BINANCE_S3_BUCKET = 'my-binance-config'
 logger = logging.getLogger('binance')
 formatter = logging.Formatter('%(levelname)s - %(message)s')
