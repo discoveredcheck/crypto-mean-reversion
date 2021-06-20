@@ -201,4 +201,4 @@
     "USDSBUSDT",
     "CAKEUSDT",
     "DODOUSDT",
-    "ACMUSDT"], "window_size":1075, "window_size_short": 15, "binance_accounts": [["binance/binance", {"fund_size": 3500, "name": "account1", "hedge_weight": 0.0}]], "db_secret_name": "binance/rds"}
+    "ACMUSDT"], "window_size":1075, "window_size_short": 15, "binance_accounts": [["binance/binance", {"fund_size": 4000, "name": "account1", "hedge_weight": 0.0}]], "db_secret_name": "binance/rds"}
