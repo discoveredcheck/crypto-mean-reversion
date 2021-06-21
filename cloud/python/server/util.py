@@ -554,3 +554,17 @@ async def buy_bnb_maybe(binance_secret_name, threshold_usdt):
         error(f'Exception while buying BNB. {ex}')
     finally:
         await client.close_connection()
+
+async def liquidate(binance_secret_name, db_secret_name):
+    binance_client = get_binance_client(binance_secret_name)
+    try:
+        balances, _ = await read_account(binance_client, 'bid')
+        for symbol, bal in balances.items():
+            if symbol == 'USDT':
+                continue
+            if bal > 1.:
+                await update_position(binance_client, db_secret_name, symbol, -bal)
+    except Exception as ex:
+        error(f'Exception while liquidating {ex}')
+    finally:
+        await binance_client.close_connection()

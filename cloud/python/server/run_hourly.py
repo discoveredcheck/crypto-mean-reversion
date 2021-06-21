@@ -1,7 +1,7 @@
 import asyncio
 from util import download_prices, download_order_book, get_target_positions, create_orders, save_fill_prices, get_current_config,\
     logger, get_secret, get_binance_server_time, download_account_balance, info, error, warn, ASYNCIO_CONTEXT, create_orders_tpsl,\
-    buy_bnb_maybe
+    buy_bnb_maybe, liquidate
 import argparse
 import aiocontext
 import os
@@ -76,6 +76,9 @@ async def main(args):
     if 'buy_bnb' in query_tasks:
         for i, (acc, config) in enumerate(global_config['binance_accounts']):
             await asyncio.create_task(wrapper(buy_bnb_maybe(acc, args.buy_bnb_threshold), name=config['name']))
+    if 'liquidate' in query_tasks:
+        for i, (acc, config) in enumerate(global_config['binance_accounts']):
+            await asyncio.create_task(wrapper(liquidate(acc, db_name), name=config['name']))
     info('All tasks finished')
 
 if __name__ == '__main__':
