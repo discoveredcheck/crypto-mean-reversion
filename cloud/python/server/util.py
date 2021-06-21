@@ -560,7 +560,7 @@ async def liquidate(binance_secret_name, db_secret_name):
     try:
         balances, _ = await read_account(binance_client, 'bid')
         for symbol, bal in balances.items():
-            if symbol == 'USDT':
+            if symbol in ['BNBUSDT', 'USDT']:
                 continue
             if bal > 1.:
                 await update_position(binance_client, db_secret_name, symbol, -bal)
