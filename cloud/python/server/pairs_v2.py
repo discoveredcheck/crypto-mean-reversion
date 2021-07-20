@@ -335,10 +335,6 @@ if __name__ == '__main__':
         next_state.extend(new_next_state)
         logger.info(f'New state after updating pairs {next_state}')
         set_state(next_state)
-    test_pairs = get_candidates()[:10]
-    prices = initial_data(MAIN_ACCOUNT, test_pairs)
-    for tp in test_pairs:
-        logger.info(f'Test pair {tp} = {calc_pairs_pnl(prices[tp[0]], prices[tp[1]])[1]}')
     logger.info('Updating candidates')
     data = download_data(MAIN_ACCOUNT, NUM_PREV_DAYS)
     candidates = calc_new_universe(data, 1000)
