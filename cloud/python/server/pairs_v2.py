@@ -321,13 +321,10 @@ if __name__ == '__main__':
         logger.info(candidates_sorted)
         existing_pairs = set([_ for x in next_state for _ in x['pair']])
         new_states = []
-        for mn, (m1, m2) in enumerate(candidates_sorted):
+        for m1, m2 in candidates_sorted:
             logger.info(f'Trying {(m1, m2)}')
             if m1 not in existing_pairs and m2 not in existing_pairs:
                 ns = new_state([m1, m2])
-                ns['idx'] = mn
-                prs = initial_data(MAIN_ACCOUNT, [(m1, m2)])
-                ns['crossings'] = calc_pairs_pnl_v2(prs[m1], prs[m2])[1]
                 new_states.append(ns)
                 logger.info(f'Adding {(m1, m2)}')
                 if len(new_states) == num_addn_pairs:
