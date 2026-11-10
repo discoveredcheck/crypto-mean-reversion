@@ -1,0 +1,18 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# notebooks and local run files
+.ipynb_checkpoints/
+log
+log_account
+*.pkl
